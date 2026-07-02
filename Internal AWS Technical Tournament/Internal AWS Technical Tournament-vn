@@ -1,0 +1,38 @@
++++
+title = "Sự kiện : Internal AWS Technical Tournament"
+date = 2026-06-20
+weight = 2
+chapter = false
++++
+
+# # Sự kiện : Internal AWS Technical Tournament
+
+### Thông tin chung
+* **Tên sự kiện:** Internal AWS Technical Tournament (Cuộc thi Khắc phục Sự cố & Kiểm toán Hạ tầng Đám mây)
+* **Ngày tham gia:** 20/06/2026 (Tuần thực tập thứ 9)
+* **Trọng tâm công nghệ:** VPC Network Diagnostics, IAM Security Governance, High-Availability Outage Recovery, Stateless Authentication
+
+---
+
+### I. Tóm tắt nội dung các vòng thách thức kỹ thuật
+
+#### 1. Khắc phục lỗi cấu hình sai (Infrastructure Configuration Drift)
+* **Giám sát viên:** Đội ngũ Kỹ sư Đánh giá Doanh nghiệp tại AWS Cloud Training
+* **Vấn đề:** Hạ tầng giả định bị mất kết nối hoàn toàn ra internet; các máy chủ EC2 nằm trong Private Subnet không thể tải gói thư viện bổ sung, đồng thời hệ thống chịu lỗi ALB Target Group không phản hồi.
+* **Giải pháp:** Tiến hành kiểm tra bảng định tuyến (VPC Route Tables), cấu hình lại NAT Gateway và sửa đổi các ACL/Security Group bị chồng chéo để khôi phục kết nối mạng an toàn.
+
+#### 2. Kiểm toán và Tái cấu hình ranh giới bảo mật IAM
+* **Thử thách:** Hệ thống chứa các chính sách IAM bị phân bổ sai lệch (Over-privileged), vi phạm nguyên tắc đặc quyền tối thiểu (Least Privilege) tạo ra các lỗ hổng rò rỉ dữ liệu.
+* **Giải pháp:** Phân tích nhật ký hoạt động qua AWS CloudTrail, bóc tách và viết lại các chính sách IAM Inline/Managed Policy, thiết lập chặt chẽ IAM Permission Boundaries cho các nhóm tài nguyên thực tập.
+
+#### 3. Tích hợp cổng API không trạng thái (Stateless API Authentication Gateway)
+* **Thử thách:** Triển khai một hệ thống xử lý tính toán có rào chắn bảo mật xác thực nghiêm ngặt và tự động co giãn tải trong thời gian giới hạn.
+* **Giải pháp:** Cấu hình Amazon API Gateway kết hợp Token Authorizers dựa trên Amazon Cognito User Pools, thiết lập luồng chuyển tiếp dữ liệu an toàn để kích hoạt mã xử lý không máy chủ trên AWS Lambda.
+
+---
+
+### II. Cảm nhận và Bài học kinh nghiệm
+
+* **Học từ sự cố thực tế:** Việc ghi nhớ lý thuyết tài liệu hoàn toàn khác biệt với trải nghiệm gỡ lỗi (debugging) trực tiếp khi hệ thống đang gặp lỗi sập nguồn. Nhật ký logs (CloudWatch/CloudTrail) chính là chiếc la bàn duy nhất của kỹ sư.
+* **Tối ưu kiến trúc động:** Thiết kế một hệ thống chạy được là chưa đủ, kiến trúc đó phải có khả năng tự phục hồi (Self-healing), phân tách ranh giới mạng thông minh (Subnetting) để thu hẹp vùng ảnh hưởng khi có sự cố.
+* **Phối hợp tác chiến:** Trong các tình huống khẩn cấp, việc phân chia công việc rạch ròi theo phân tầng hệ thống (Mạng → Bảo mật → Compute) giúp rút ngắn thời gian khôi phục dịch vụ một cách tối đa.

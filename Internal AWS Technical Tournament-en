@@ -1,0 +1,38 @@
++++
+title = "Event : Internal AWS Technical Tournament"
+date = 2026-06-20
+weight = 2
+chapter = false
++++
+
+# #  Event : Internal AWS Technical Tournament
+
+### Overview
+* **Event Name:** Internal AWS Technical Tournament (Cloud Infrastructure Troubleshooting & Audit Challenge)
+* **Participation Date:** June 20, 2026 (Internship Week 9)
+* **Technical Focus:** VPC Network Diagnostics, IAM Security Governance, High-Availability Outage Recovery, Stateless Authentication
+
+---
+
+### I. Summary of Technical Challenge Tracks
+
+#### 1. Mitigating Infrastructure Configuration Drift
+* **Evaluators:** Corporate Engineering Review Panel at AWS Cloud Training
+* **Problem:** The simulated architecture suffered a complete loss of outbound internet routing; backend EC2 servers inside Private Subnets were isolated from package dependencies, while the Application Load Balancer reported continuous Target Group failures.
+* **Solution:** Audited VPC Route Tables, re-established NAT Gateway routes, and resolved overlapping Security Group/NACL definitions to restore secure edge-to-origin traversal.
+
+#### 2. Auditing and Restructuring IAM Security Boundaries
+* **Challenge:** The target deployment model contained over-privileged IAM structures violating the principle of Least Privilege, exposing system metrics to unauthorized microservice layers.
+* **Solution:** Evaluated access trends via AWS CloudTrail logs, stripped and rewrote broken Inline/Managed policies, and enforced strict IAM Permission Boundaries across team training profiles.
+
+#### 3. Stateless API Authentication Gateway Integration
+* **Challenge:** Provision a highly secure, auto-scaling API compute barrier with robust token authorization mechanics under tight time conditions.
+* **Solution:** Engineered Amazon API Gateway custom authorizers backed by Amazon Cognito User Pools, ensuring safe authorization payloads before invoking backend serverless compute threads via AWS Lambda.
+
+---
+
+### II. Personal Experiences and Lessons Learned
+
+* **Learning from Outages:** Memorizing static service parameters is completely different from practical real-time debugging when a system goes down. Centralized telemetry traces (CloudWatch/CloudTrail) are an engineer's only true compass.
+* **Dynamic Architectural Resilience:** Building a functional architecture is only the baseline; the system must prove self-healing capabilities and leverage smart subnet isolation patterns to minimize blast radiuses during incidents.
+* **Incident Collaboration:** Under high-pressure conditions, dividing remediation lanes systematically across functional boundaries (Networking → Access Security → Compute) minimizes target recovery time frames efficiently.
